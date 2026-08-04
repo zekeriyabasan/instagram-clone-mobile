@@ -24,6 +24,29 @@ class AuthNotifier extends AsyncNotifier<void> {
     _repository = ref.read(authRepositoryProvider);
   }
 
+  Future<bool> register({
+    required String username,
+    required String email,
+    required String password,
+  }) async {
+    state = const AsyncLoading();
+
+    try {
+      await _repository.register(
+        username: username,
+        email: email,
+        password: password,
+      );
+
+      state = const AsyncData(null);
+
+      return true;
+    } catch (e, st) {
+      state = AsyncError(e, st);
+      return false;
+    }
+  }
+
   Future<bool> login({
     required String username,
     required String password,

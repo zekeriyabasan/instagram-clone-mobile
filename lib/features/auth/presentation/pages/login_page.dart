@@ -82,6 +82,15 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         : const Text("Giriş Yap"),
               ),
             ),
+
+            const SizedBox(height: 16),
+
+            TextButton(
+              onPressed: () {
+                context.push("/register");
+              },
+              child: const Text("Hesabın yok mu? Kayıt Ol"),
+            ),
           ],
         ),
       ),

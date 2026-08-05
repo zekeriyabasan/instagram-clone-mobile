@@ -59,4 +59,14 @@ class PostNotifier extends AsyncNotifier<List<Post>> {
       return _repository.getAllPosts();
     });
   }
+
+  Future<void> addComment({
+    required int postId,
+    required String content,
+  }) async {
+    state = await AsyncValue.guard(() async {
+      await _repository.createComment(postId: postId, content: content);
+      return _repository.getAllPosts();
+    });
+  }
 }

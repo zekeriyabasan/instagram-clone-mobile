@@ -54,4 +54,14 @@ class PostService {
   Future<void> deletePost(int postId) async {
     await DioClient.dio.delete('${ApiConstants.posts}$postId');
   }
+
+  Future<void> createComment({
+    required int postId,
+    required String content,
+  }) async {
+    await DioClient.dio.post(
+      ApiConstants.comments,
+      data: {'post_id': postId, 'content': content},
+    );
+  }
 }

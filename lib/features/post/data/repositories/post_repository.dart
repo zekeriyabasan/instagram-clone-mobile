@@ -33,4 +33,8 @@ class PostRepository {
   Future<void> deletePost(int postId) {
     return _service.deletePost(postId);
   }
+
+  Future<void> createComment({required int postId, required String content}) {
+    return _service.createComment(postId: postId, content: content);
+  }
 }

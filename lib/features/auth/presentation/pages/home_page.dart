@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../auth/providers/auth_provider.dart';
+import '../../../post/presentation/pages/post_list_page.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -22,17 +23,15 @@ class HomePage extends ConsumerWidget {
                 context.go("/login");
               }
             },
-          )
+          ),
         ],
       ),
-      body: const Center(
-        child: Text(
-          "Instagram Clone",
-          style: TextStyle(
-            fontSize: 32,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+      body: const PostListPage(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          context.push('/create-post');
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
